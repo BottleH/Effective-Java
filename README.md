@@ -161,5 +161,33 @@ java는 GC가 자동으로 다 쓴 객체를 회수해주긴 하지만, 몇몇 �
 
  #### 7-3. 콜백
  해지하지 않는다면 계속 쌓인다.
- > 해결방법: weak reference로 
+ > 해결방법: weak reference로 저장
+ 
+### 아이템8 - finalizer와 cleaner 사용을 피하라.
+ Finalizer는 예측불가능하고 위험하며, 대부분 불필요하다. 성능도 안좋아진다.
+ cleaner 또한 finalizer보다 덜 위험하지만 여전히 여전히 예측할 수 없고, 느리고, 일반적으로 불필요하다.
+ 
+### 아이템9 - try-finally보다는 try-with-resources를 사용하라
+ 전통적으로 자원이 제대로 닫힘을 보장하는 수단으로 try-finally가 쓰였다. 그러나 2개 이상의 자원을 사용할 때 이것은 복잡해진다.
+ ```{.java}
+ InputStream in = new FileInputStream(src); 
+ try { 
+    OutputStream out = new FileOutputStream(dst);
+    try { 
+    ... 
+    } finally { 
+    out.close(); 
+    } 
+ } finally { 
+    in.close(); 
+ }
+ ```
+ ```try-with-resources```는 AutoCloseable를 구현하고 자동으로 닫아준다. 자원이 여러개여도 가능하다.
+ ```{.java}
+ try (InputStream in = new FileInputStream(src); OutputStream out = new FileOutputStream(dst)) {
+    ... 
+ } catch (..) {
+ }
+ ```
+ 
  
