@@ -1,6 +1,6 @@
 # Effective-Java 4인 스터디
 
-> __도서: 이펙티브 자바 3판__
+> __ref. Effective Java 3/E__
 
 ## 1장 들어가기
 
