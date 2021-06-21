@@ -1,1 +1,0 @@
-eureka:server:response-cache-update-interval-ms:1000 #기본값은30초이나개발 편의를 위해 1초로 설정 enableSelfPreservation:false # 개발모드 client:register-with-eureka:false # 개발모드 fetch-registry:false # 개발모드 service-url:defaultZone:http://localhost:8761/eureka  #기본값설정 instance: prefer-ip-address: true # 각 서버별 접근을 IP로 하겠다는 의미
